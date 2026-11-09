@@ -25,11 +25,11 @@ OhMyPi (omp) consumes the scaffold's portable core natively: it discovers standa
 
 ### Option 1: Pi-style empty adapter (selected)
 
-Add `omp` to `SUPPORTED_PLATFORMS` with an adapter that renders no files. omp's native discovery covers everything the portable core provides. Minimal surface, no new generated files, golden tree unchanged.
+Add `omp` to `SUPPORTED_PLATFORMS` with an adapter that renders only the sticky `.omp/RULES.md` invariant file. omp's native discovery covers everything else the portable core provides. Minimal surface; the invariant file is the only generated-file addition.
 
 ### Option 2: Generate omp-native artifacts
 
-Emit `.omp/AGENTS.md` and/or `.omp/RULES.md` and `.omp/mcp.json`. `.omp/AGENTS.md` would shadow the standalone `AGENTS.md` (omp native priority 100 versus 10) and duplicate mutable-seed content with drift risk. `.omp/RULES.md` (sticky invariants) is plausible but is a separate, decision-gated story. Rejected for the initial scope.
+Emit `.omp/AGENTS.md` and/or `.omp/mcp.json`. `.omp/AGENTS.md` would shadow the standalone `AGENTS.md` (omp native priority 100 versus 10) and duplicate mutable-seed content with drift risk. The sticky `.omp/RULES.md` invariant file was accepted separately on 2026-11-09 and is part of this decision; native skills, native MCP config, and hooks remain rejected.
 
 ### Option 3: Do nothing
 
@@ -37,12 +37,12 @@ omp remains an undocumented, unselectable consumer; platform rows and contract t
 
 ## Decision
 
-Adopt Option 1: omp becomes the fifth supported platform with an empty adapter.
+Adopt Option 1: omp becomes the fifth supported platform with a minimal adapter that emits only the sticky `.omp/RULES.md` invariant file (owner-approved 2026-11-09).
 
 1. `SUPPORTED_PLATFORMS` gains `"omp"`; MCP/agents `effective_by_platform` excludes omp (already, by set membership).
-2. `adapters/omp.py` registers an empty-render adapter; the platform row describes native portable-core consumption and the root `mcp.json` fallback.
+2. `adapters/omp.py` renders exactly one omp-native artifact: the sticky `.omp/RULES.md` invariant file. The platform row describes native portable-core consumption, the root `mcp.json` fallback, and the sticky rules.
 3. `.omp/` joins `PORTABLE_FORBIDDEN` in both validators and the mirrored test token list.
-4. A contract test asserts an omp-only request renders the portable core with no omp-specific files and no root `.mcp.json`.
+4. A contract test asserts an omp-only request renders the portable core, exactly the `.omp/RULES.md` artifact, and no root `.mcp.json`.
 5. Support docs and README describe omp as selectable and document the skill-precedence caveat for `claude,omp` combinations.
 6. A live smoke against installed omp (18.18.3 at authoring time) updates the verified-version column.
 
@@ -56,7 +56,7 @@ Adopt Option 1: omp becomes the fifth supported platform with an empty adapter.
 
 ### Negative
 
-- omp-specific capabilities (sticky rules, native skills, hooks) remain unreachable through the generator.
+- omp-specific capabilities (native skills, native context file, hooks) remain unreachable through the generator.
 - Support claims rely on omp's documented discovery behavior; the live smoke is manual until an omp introspection command is identified.
 
 ### Risks and mitigations
@@ -66,13 +66,12 @@ Adopt Option 1: omp becomes the fifth supported platform with an empty adapter.
 
 ## Implementation and validation
 
-1. Platform, adapter, registry, platform rows, neutrality tokens, contract test, and docs landed on `feat/omp-platform-support`.
+1. Platform, adapter, sticky `.omp/RULES.md`, registry, platform rows, neutrality tokens, contract tests, and docs landed on `feat/omp-platform-support`.
 2. Gates: the unittest suite (including the new omp contract test), `agentic_bootstrap validate --target .`, `.agentic/bin/validate` (ADR structural checks), `docs-check`, the canonical all-platform dry-run preview, and both example refreshes.
 3. Live omp smoke recorded in `docs/PLATFORM_SUPPORT.md` with CLI version and date.
 
 ## Revisit triggers
 
-- Owner accepts the sticky `.omp/RULES.md` invariant file (decision-gated story from the research doc).
 - omp ships an introspection command enabling scripted discovery smoke.
 - Users report stale-copy skill loads in `claude,omp` projects: revisit skill mirroring or precedence guidance.
 - omp changes discovery defaults (providers, layout, priorities): re-verify and update the support row.

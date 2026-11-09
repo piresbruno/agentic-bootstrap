@@ -14,7 +14,7 @@ Support is capability-specific. “Enabled” means the adapter was selected; it
 
 ## Portable Core
 
-All selected platforms share provider-neutral project instructions, task workflow, ADRs, deterministic validators, and Agent Skills where natively supported. The project-scoped `agentic-bootstrap` skill is advisory: it stops after preview and requires separate human-terminal apply. OhMyPi (omp) consumes the portable core natively; its adapter generates no platform-specific files.
+All selected platforms share provider-neutral project instructions, task workflow, ADRs, deterministic validators, and Agent Skills where natively supported. The project-scoped `agentic-bootstrap` skill is advisory: it stops after preview and requires separate human-terminal apply. OhMyPi (omp) consumes the portable core natively; its adapter generates only the sticky `RULES.md` invariant file at `.omp/RULES.md`.
 
 ## Optional Features
 

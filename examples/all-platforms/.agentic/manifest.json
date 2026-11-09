@@ -8,7 +8,7 @@
     "opencode",
     "omp"
   ],
-  "updated_at": "2026-11-09T15:45:09+00:00",
+  "updated_at": "2026-11-09T16:02:58+00:00",
   "files": {
     ".agentic/bin/docs-check": {
       "sha256": "bb84a835599d8b9052231ffe59fae3b1ee29ea9d22345632143f9be03be16e9e",
@@ -95,6 +95,11 @@
       "executable": false,
       "mutable": false
     },
+    ".omp/RULES.md": {
+      "sha256": "b4c2b37e6eb45379c5aa18479dec4be752685c40ed2c44b0523731a683cdf3bd",
+      "executable": false,
+      "mutable": false
+    },
     ".opencode/agents/architecture-reviewer.md": {
       "sha256": "179074fdc69ba4ad772971640c89ad1ddf3f5be312fd274fc1d6ecd9d44b387e",
       "executable": false,
@@ -136,7 +141,7 @@
       "mutable": true
     },
     "docs/PLATFORM_SUPPORT.md": {
-      "sha256": "b1904f8a878829f7f5ecb7eee09d76e9c7425ba7ac7af8dc3093cd48f6628412",
+      "sha256": "7c2f06456ef9c6687a738e01dd2d84d920095c05c8f35e4782b43d98b66bdd0f",
       "executable": false,
       "mutable": false
     },
