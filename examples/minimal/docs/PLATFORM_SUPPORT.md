@@ -10,7 +10,7 @@ Support is capability-specific. “Enabled” means the adapter was selected; it
 | OpenAI Codex | Not selected | AGENTS.md; .agents/skills; optional .codex/config.toml | Native |
 | Pi Coding Agent | Enabled | AGENTS.md and .agents/skills | Native core; MCP/subagents require extensions |
 | OpenCode | Not selected | AGENTS.md; .agents/skills; opencode.json | Native |
-| OhMyPi (omp) | Not selected | AGENTS.md and .agents/skills | Native core; root mcp.json/.mcp.json MCP fallback; no platform-specific files |
+| OhMyPi (omp) | Not selected | AGENTS.md and .agents/skills | Native core; root mcp.json/.mcp.json MCP fallback; sticky .omp/RULES.md invariants |
 
 ## Portable Core
 

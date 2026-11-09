@@ -67,6 +67,7 @@ class PlatformContractTests(unittest.TestCase):
             support = files["docs/PLATFORM_SUPPORT.md"].content.decode()
             self.assertIn("OhMyPi (omp)", support)
             self.assertIn("sticky `RULES.md`", support)
+            self.assertIn("sticky .omp/RULES.md invariants", support)
 
     @unittest.skipUnless(shutil.which("claude"), "Claude Code CLI not installed")
     def test_claude_parses_project_mcp(self) -> None:

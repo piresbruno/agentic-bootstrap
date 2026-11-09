@@ -4,10 +4,10 @@
   "platforms": [
     "pi"
   ],
-  "updated_at": "2026-11-09T16:02:58+00:00",
+  "updated_at": "2026-11-09T16:19:05+00:00",
   "files": {
     ".agentic/bin/docs-check": {
-      "sha256": "bb84a835599d8b9052231ffe59fae3b1ee29ea9d22345632143f9be03be16e9e",
+      "sha256": "31a23e8189eb5077217248240fbd04a0f5ac53a255c50a13920aa55e9c517c00",
       "executable": true,
       "mutable": false
     },
@@ -62,7 +62,7 @@
       "mutable": true
     },
     "docs/PLATFORM_SUPPORT.md": {
-      "sha256": "1a9c91750cbfd563327d5ddf2173267d41bb8b073feea71ee75ad336c146b124",
+      "sha256": "a675a0c93af3a59c7265eab7db8912418767a0bd90bf4f95b0e8346ffeb85735",
       "executable": false,
       "mutable": false
     },

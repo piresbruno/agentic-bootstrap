@@ -8,10 +8,10 @@
     "opencode",
     "omp"
   ],
-  "updated_at": "2026-11-09T16:02:58+00:00",
+  "updated_at": "2026-11-09T16:19:05+00:00",
   "files": {
     ".agentic/bin/docs-check": {
-      "sha256": "bb84a835599d8b9052231ffe59fae3b1ee29ea9d22345632143f9be03be16e9e",
+      "sha256": "31a23e8189eb5077217248240fbd04a0f5ac53a255c50a13920aa55e9c517c00",
       "executable": true,
       "mutable": false
     },
@@ -141,7 +141,7 @@
       "mutable": true
     },
     "docs/PLATFORM_SUPPORT.md": {
-      "sha256": "7c2f06456ef9c6687a738e01dd2d84d920095c05c8f35e4782b43d98b66bdd0f",
+      "sha256": "8b486bbc175dc01e71566d802af5194d653230ccb3a4a0ef87d536ff64940504",
       "executable": false,
       "mutable": false
     },

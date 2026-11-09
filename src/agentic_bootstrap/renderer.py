@@ -181,7 +181,7 @@ def _platform_rows(request: BootstrapRequest) -> str:
             "OhMyPi (omp)",
             "omp",
             "AGENTS.md and .agents/skills",
-            "Native core; root mcp.json/.mcp.json MCP fallback; no platform-specific files",
+            "Native core; root mcp.json/.mcp.json MCP fallback; sticky .omp/RULES.md invariants",
         ),
     ]
     return "\n".join(

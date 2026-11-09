@@ -18,12 +18,12 @@ OhMyPi (omp) consumes the scaffold's portable core natively: it discovers standa
 - Platform support is a durable, integration-level decision requiring an ADR per the development process.
 - omp ranks `.claude/skills` above `.agents/skills` during skill deduplication; projects selecting both must avoid stale-copy precedence.
 - The portable core must stay free of omp-specific paths: `.omp/` joins the forbidden portable tokens.
-- omp-native artifacts (`.omp/AGENTS.md`, `.omp/RULES.md`, `.omp/mcp.json`, hooks) remain ungenerated; generating them expands ownership and trust surface without demonstrated need.
+- omp-native artifacts (`.omp/AGENTS.md`, `.omp/mcp.json`, hooks) remain ungenerated; generating them expands ownership and trust surface without demonstrated need.
 - Generation must stay offline and deterministic; omp version cadence must not be encoded in templates.
 
 ## Considered options
 
-### Option 1: Pi-style empty adapter (selected)
+### Option 1: Minimal native adapter (selected)
 
 Add `omp` to `SUPPORTED_PLATFORMS` with an adapter that renders only the sticky `.omp/RULES.md` invariant file. omp's native discovery covers everything else the portable core provides. Minimal surface; the invariant file is the only generated-file addition.
 
@@ -51,13 +51,13 @@ Adopt Option 1: omp becomes the fifth supported platform with a minimal adapter 
 ### Positive
 
 - omp users get first-class selection, validation, manifest ownership, and retrofit semantics for free.
-- No new generated files: golden tree, examples layout, and ownership model unchanged.
+- One new generated file (`.omp/RULES.md`): golden tree, examples, and ownership model updated accordingly.
 - Portable-core neutrality now explicitly covers omp paths.
 
 ### Negative
 
 - omp-specific capabilities (native skills, native context file, hooks) remain unreachable through the generator.
-- Support claims rely on omp's documented discovery behavior; the live smoke is manual until an omp introspection command is identified.
+- Support claims rely on omp's documented discovery behavior; the live smoke uses `omp skill list` plus session evidence and is re-run per verification.
 
 ### Risks and mitigations
 
