@@ -8,11 +8,11 @@ Last verified: 2026-11-09.
 | OpenAI Codex | 0.145.0 | `AGENTS.md` | `.agents/skills`, including advisory bootstrap | `.codex/config.toml` opt-in | `.codex/agents/*.toml` opt-in |
 | Pi Coding Agent | 0.84.4 | `AGENTS.md` | `.agents/skills`, including advisory bootstrap | No built-in MCP | Requires separately reviewed extension/package |
 | OpenCode | 2.0.28 | `AGENTS.md` | `.agents/skills`, including advisory bootstrap | `opencode.json` and native MCP | `.opencode/agents/*.md` opt-in |
-| OhMyPi (omp) | 18.18.3 | `AGENTS.md` standalone discovery; native `.omp/AGENTS.md` not generated | `.agents/skills` native (agents provider, default-on); `.claude/skills` also discovered | Root `mcp.json` / `.mcp.json` fallback | No adapter artifacts; omp hooks/plugins not generated |
+| OhMyPi (omp) | 18.18.3 | `AGENTS.md` portable core; no omp-native context generated | `.agents/skills` native (agents provider, default-on); `.claude/skills` also discovered | Root `mcp.json` / `.mcp.json` fallback | No adapter artifacts (no `.omp/` files) |
 
 Upstream releases newer than the verified versions were published as of 2026-11-09 for Claude Code (2.1.319) and Codex (0.167.0); they have not yet been verified against this repository's contract tests. Pi, OpenCode, and omp release channels are not npm-tracked versions and are verified against installed builds.
 
-OhMyPi (omp) is consumed through the portable core and is not a selectable adapter: omp discovers standalone `AGENTS.md` and `.agents/skills/<name>/SKILL.md` by default (the `agents` skill provider, project scope, one-level layout), reads root `mcp.json` / `.mcp.json` as MCP fallback files, and discovers standalone `CLAUDE.md` through its `claude-md` provider. Identical `.claude/skills` and `.agents/skills` copies collapse silently during omp skill deduplication. No `.omp/` artifacts (native context file, sticky `RULES.md`, `.omp/mcp.json`, hooks) are generated.
+OhMyPi (omp) is a selectable platform (ADR-0008): the adapter generates no omp-specific files because omp natively discovers standalone `AGENTS.md` and `.agents/skills/<name>/SKILL.md` (the `agents` skill provider, project scope, one-level layout), reads root `mcp.json` / `.mcp.json` as MCP fallback files, and discovers standalone `CLAUDE.md` through its `claude-md` provider. When Claude Code and omp are both selected, identical `.claude/skills` and `.agents/skills` copies collapse during omp skill deduplication; prefer editing the `.agents/skills` copy or selecting `omp` alone, because omp ranks `.claude/skills` higher and would load a stale copy after a one-sided edit. No `.omp/` artifacts (native context file, sticky `RULES.md`, `.omp/mcp.json`, hooks) are generated.
 
 ## Support contract
 
